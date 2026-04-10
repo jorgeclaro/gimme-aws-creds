@@ -1164,10 +1164,10 @@ class TestOktaClassicClient(unittest.TestCase):
         self.assertEqual(result, "Okta Verify App: SmartPhone_IPhone: Jane.Doe iPhone")
 
     def test_build_factor_name_push_without_profile(self):
-        """ Test building a display name for push"""
+        """ Test building a display name for push without profile key"""
         result = self.client._build_factor_name(self.push_factor_without_profile)
         self.assertEqual(result, "Okta Verify App - push verification")
-        
+
     def test_build_factor_name_totp(self):
         """ Test building a display name for TOTP"""
         result = self.client._build_factor_name(self.totp_factor)
