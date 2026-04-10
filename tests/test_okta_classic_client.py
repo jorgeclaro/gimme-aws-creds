@@ -81,6 +81,23 @@ class TestOktaClassicClient(unittest.TestCase):
             }
         }
 
+        self.push_factor_without_profile = {
+                "id": "opf9ei43pbAgb2qgc0h7",
+                "factorType": "push",
+                "provider": "OKTA",
+                "vendorName": "OKTA",
+                "_links": {
+                    "verify": {
+                        "href": "https://example.okta.com/api/v1/authn/factors/opf9ei43pbAgb2qgc0h7/verify",
+                        "hints": {
+                            "allow": [
+                                "POST"
+                            ]
+                        }
+                    }
+                }
+            }
+        
         self.push_factor = {
                 "id": "opf9ei43pbAgb2qgc0h7",
                 "factorType": "push",
@@ -1146,6 +1163,11 @@ class TestOktaClassicClient(unittest.TestCase):
         result = self.client._build_factor_name(self.push_factor)
         self.assertEqual(result, "Okta Verify App: SmartPhone_IPhone: Jane.Doe iPhone")
 
+    def test_build_factor_name_push_without_profile(self):
+        """ Test building a display name for push"""
+        result = self.client._build_factor_name(self.push_factor_without_profile)
+        self.assertEqual(result, "Okta Verify App - push verification")
+        
     def test_build_factor_name_totp(self):
         """ Test building a display name for TOTP"""
         result = self.client._build_factor_name(self.totp_factor)
