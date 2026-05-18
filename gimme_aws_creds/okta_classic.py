@@ -883,12 +883,8 @@ class OktaClassicClient(object):
             if factor_id_matches:
                 preferred_factors = factor_id_matches
             else:
-                available = ', '.join(
-                    '{} ({})'.format(item.get('id'), self._build_factor_name(item))
-                    for item in factors
-                )
-                self.ui.notify('Preferred factor id of {} not available. Available factor ids: {}'.format(
-                    self._preferred_mfa_factor_id, available
+                self.ui.notify('Preferred factor id {!r} not found among {} enrolled factors.'.format(
+                    self._preferred_mfa_factor_id, len(factors)
                 ))
 
         if len(preferred_factors) == 1:
