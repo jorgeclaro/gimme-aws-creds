@@ -236,6 +236,7 @@ A configuration wizard will prompt you to enter the necessary configuration para
   - GOOGLE
   - OKTA
   - DUO
+- preferred_mfa_factor_id - (optional) pin a specific MFA factor by its Okta factor id. Useful when multiple factors of the same type are enrolled (e.g. several webauthn authenticators such as Touch ID, iCloud Keychain, YubiKey) and `preferred_mfa_type` is not narrow enough to skip the picker. Overrides `preferred_mfa_type` and `preferred_mfa_provider` when matched. If the id is not present in Okta's factor list, the available ids are listed and the interactive picker is shown. To discover ids, run gimme-aws-creds once: the picker prints each factor's id alongside its name.
 - duo_universal_factor - (optional) Configure which type of factor to use with Duo Universal Prompt. Must be one of (case-sensitive):
   - `Duo Push` (default)
   - `Passcode`

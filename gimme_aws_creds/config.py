@@ -259,6 +259,7 @@ class Config(object):
                 okta_username = Okta username
                 aws_default_duration = Default AWS session duration (3600)
                 preferred_mfa_type = Select this MFA device type automatically
+                preferred_mfa_factor_id = Pin a specific Okta factor by id (overrides preferred_mfa_type when matched)
                 include_path - (optional) includes that full role path to the role name for profile
                 enable_keychain = (optional) enable the use of the system keychain to store the user's password
 
@@ -281,6 +282,7 @@ class Config(object):
             'resolve_aws_alias': 'n',
             'include_path': 'n',
             'preferred_mfa_type': '',
+            'preferred_mfa_factor_id': '',
             'remember_device': 'n',
             'aws_default_duration': '3600',
             'output_format': 'export',
